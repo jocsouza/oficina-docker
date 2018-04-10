@@ -1,0 +1,5 @@
+criação de volumes:
+type=volume -> para dados precisam persistencia
+type=bind -> para alteração sem criação de build
+
+docker run -d --name aula-2 --mount type=volume,source=aula2-logs,target=/tmp --mount type=bind,source=$(pwd),target=/usr/src/ -p 5000:5000 oficina-docker:aula2-volumes
