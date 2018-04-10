@@ -11,4 +11,4 @@ app.logger.addHandler(handler)
 @app.route("/")
 def hello():
     app.logger.error(('The referrer was {}'.format(request.referrer)))
-    return "Hello World - aula 2 - Jocemar!"
+    return "Hello World - aula 2 - docker-compose - Jocemar!"
