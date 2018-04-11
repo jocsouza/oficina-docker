@@ -1,32 +1,18 @@
-version: '2.2'
+version: '2'
+volumes:
+  app_data:
+  redis_data:
+  
 services:
-  aula2:
-    container_name: aula-2
-    restart: always
-    image: oficina-docker:aula2-volumes
+  app:
+    image: oficina:aula3-network
+    container_name: aula-3
     build: .
     volumes:
-      - .:/usr/src
-      - aula2-logs:/tmp   
-
-  nginx: 
-    container_name: nginx
-    restart: always
-    image: nginx:alpine
-    ports:
-      - 80:80
-
-  db:
-    container_name: postgres
-    restart: always
-    image: postgres:9.6
-    ports:
-      - 5432:5432
-
-  cache:
-    container_name: memcached
-    image: memcached
-
-volumes:
-  aula2-logs:
+     - app_data:/tmp
+     
+  redis:
+    image: redis:alpine
+    volumes:
+     - redis_data:/data
 

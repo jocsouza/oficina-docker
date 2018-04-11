@@ -6,6 +6,8 @@ ENV FLASK_APP=app.py
 
 WORKDIR /usr/src
 
+EXPOSE 5000
+
 COPY . /usr/src/
 
 RUN pip install -r requirements.txt
