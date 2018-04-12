@@ -1,0 +1,23 @@
+version: '2.2'
+services:
+  fedora1:
+    image: fedora
+    command: sh -c 'time dd if=/dev/zero of=test.out bs=1M count=512 oflag=direct'
+    blkio_config:
+      device_write_bps:
+       - path: /dev/sda
+         rate: '10mb'
+      device_read_bps:
+       - path: /dev/sda
+         rate: '10mb'
+  fedora2:
+    image: fedora
+    command: sh -c 'time dd if=/dev/zero of=test.out bs=1M count=512 oflag=direct'
+    blkio_config:
+      device_write_bps:
+       - path: /dev/sda
+         rate: '5mb'
+      device_read_bps:
+       - path: /dev/sda
+         rate: '5mb'
+         

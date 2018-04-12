@@ -1,12 +1,12 @@
-version: '2'
+version: '3.4'
 volumes:
   app_data:
   redis_data:
   
 services:
   app:
-    image: oficina:aula3-network
-    container_name: aula-3
+    image: oficina:aula4-healthcheck
+    container_name: aula-4
     build: .
     volumes:
      - app_data:/tmp
@@ -15,4 +15,10 @@ services:
     image: redis:alpine
     volumes:
      - redis_data:/data
+
+  healthcheck:
+    test: ["CMD", "curl", "-f", "http://localhost:5000"]
+    interval: 5m
+    timeout: 1s
+    retries: 3
 
